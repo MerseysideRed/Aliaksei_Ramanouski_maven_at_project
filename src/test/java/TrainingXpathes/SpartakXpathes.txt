@@ -1,0 +1,37 @@
+спартак https://spartak.by/
+
+//img[@title='Спартак']
+//img[@alt='логотип Спартак']
+
+//ul[@class='menu full']//a[text() = 'Импрессо']
+//div[@class='content_menu']//a[text() = 'Импрессо']
+
+
+//div[@class='content_menu']//span[text()='Информация для партнеров']
+//div[@class='top-h-row']//span[text()='Информация для партнеров']
+
+//i[@class = 'search fa search-btn lupa']
+//div[@class='lang-block']//i
+
+//img[@src = '/include/eye.svg']
+//a[@href='/?special_version=Y']//img
+
+//a[text()='Ru']
+//div[@class='header__lang']/a[@href='/']
+
+//div[@class='header__lang']/a[@href='/cn/']
+//a[text()='Ch']
+
+//a[text()='Скачать каталог']
+//div[@id='select-lang']/following-sibling::a
+
+//ul/li[@class='flex-nav-next']/a
+//a[@class='flex-next']
+
+//div[@class='top_slider_wrapp']//a[@href='https://vk.com/spartakby']
+//div[@class='top_slider_wrapp']//img[@src='/bitrix/templates/our_shop/images/VK.svg']
+
+//a[text()='2']
+//div[@class='flexslider']/ul/li[2]/a
+
+

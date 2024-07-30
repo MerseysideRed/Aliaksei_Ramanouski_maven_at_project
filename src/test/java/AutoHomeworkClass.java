@@ -2,8 +2,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.time.DayOfWeek;
+
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class AutoHomeworkClass {
 
@@ -23,32 +25,8 @@ public class AutoHomeworkClass {
     }
 
     static public String getTomorrowDay() {
-        DayOfWeek today = LocalDate.now().plusDays(1).getDayOfWeek();
-        switch (today) {
-            case MONDAY -> {
-                return "панядзелак";
-            }
-            case TUESDAY -> {
-                return "аўторак";
-            }
-            case WEDNESDAY -> {
-                return "серада";
-            }
-            case THURSDAY -> {
-                return "чацвер";
-            }
-            case FRIDAY -> {
-                return "пятніца";
-            }
-            case SATURDAY -> {
-                return "субота";
-            }
-            case SUNDAY -> {
-                return "нядзеля";
-            }
-            default -> {
-                return "";
-            }
-        }
+        LocalDate today = LocalDate.now().plusDays(1);
+        Locale belLocale = new Locale("be", "BY");
+        return today.format(DateTimeFormatter.ofPattern("EEEE", belLocale));
     }
 }

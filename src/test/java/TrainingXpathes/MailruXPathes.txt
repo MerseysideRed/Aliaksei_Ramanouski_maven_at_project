@@ -1,0 +1,33 @@
+mail.ru https://mail.ru/
+
+//img[@alt='Mail.ru']
+//a[@data-testid='whiteline-logo-item']/img
+
+//a[text()='Облако']
+//nav[@aria-label='Проекты']//li[3]/a
+
+//a[text()='Регистрация']
+//a[@href='//account.mail.ru/signup?from=navi&lang=ru_RU&siteid=169&app_id_mytracker=58519']
+
+//button[text()='Войти' and ancestor::div[@class='headline']]
+//button[text()='Войти' and preceding-sibling::a]
+
+//button[text()='Найти']
+//button[@data-testid='search-button']
+
+//ul/li[2]//a/span
+//div[@class='grid__ccol kmjbbgd__15ztd5e']//li[2]
+
+//div[@class='grid-middle']//button[text()='Войти']
+//div[@id='mailbox']//button[text()='Войти']
+
+//div[@id='mailbox']//a[text()='Создать почту']
+//div[@id='mailbox']//a
+
+//a[text()='Леди']
+//a[contains(text(), 'Леди')]
+
+//a[child::picture]
+//a[child::picture[child::source]]
+
+спросить насчет подробнее

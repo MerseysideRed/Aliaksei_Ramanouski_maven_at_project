@@ -26,7 +26,7 @@ public class AutoHomeworkClass {
 
     static public String getTomorrowDay() {
         LocalDate today = LocalDate.now().plusDays(1);
-        Locale belLocale = new Locale("be", "BY");
+        Locale belLocale = Locale.of("be", "BY");
         return today.format(DateTimeFormatter.ofPattern("EEEE", belLocale));
     }
 }

@@ -1,3 +1,5 @@
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 import static org.testng.AssertJUnit.assertEquals;
 
 public class BookingClassTest {
-
+    
     @Test
     public void testFiveStarsHotels() {
         WebDriver driver = new ChromeDriver();
@@ -37,8 +39,8 @@ public class BookingClassTest {
         LocalDateTime ldt2 = LocalDateTime.now().plusDays(10);
         String firstDay = ldt1.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         String secondDay = ldt2.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        driver.findElement(By.xpath("//span[@data-date='" + firstDay + "']")).click();
-        driver.findElement(By.xpath("//span[@data-date='" + secondDay + "']")).click();
+        driver.findElement(By.xpath(String.format("//span[@data-date='%s']", firstDay))).click();
+        driver.findElement(By.xpath(String.format("//span[@data-date='%s']", secondDay))).click();
 
         driver.findElement(By.xpath("//button[@data-testid='occupancy-config']")).click();
 

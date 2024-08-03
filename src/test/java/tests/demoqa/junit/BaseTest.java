@@ -12,7 +12,7 @@ public class BaseTest {
     static WebDriver driver = MyDriver.getDriver();
 
     @BeforeClass
-    public static void initDriver() {
+    public void initDriver() {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.manage().window().maximize();
         driver.get("https://demoqa.com/select-menu");

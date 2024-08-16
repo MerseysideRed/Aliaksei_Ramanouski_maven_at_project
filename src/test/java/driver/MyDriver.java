@@ -12,4 +12,9 @@ public class MyDriver {
         }
         return driver;
     }
+
+    public static void killDriver() {
+        driver.quit();
+        driver = null;
+    }
 }

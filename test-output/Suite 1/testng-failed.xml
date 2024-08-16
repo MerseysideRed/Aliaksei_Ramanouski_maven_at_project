@@ -10,7 +10,6 @@
           <include name="testCorrectPropertyRate"/>
           <include name="closeDriver"/>
           <include name="testLanguageTooltipValue"/>
-          <include name="testChangeColorOfBackgroundPropertyCard"/>
         </methods>
       </class> <!-- tests.booking.testng.BookingClassTest -->
     </classes>

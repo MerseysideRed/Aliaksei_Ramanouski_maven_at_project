@@ -4,7 +4,7 @@
 <suite name="Suite 1" verbose="3">
     <test name="Test 1">
         <classes>
-            <class name="booking.testng.BookingClassTest"/>
+            <class name="tests.booking.testng.BookingClassTest"/>
         </classes>
     </test>
 </suite>

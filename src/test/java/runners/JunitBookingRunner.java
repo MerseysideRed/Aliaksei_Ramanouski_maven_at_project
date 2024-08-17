@@ -7,6 +7,4 @@ import tests.booking.junit.BookingClassTest;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({BookingClassTest.class})
 public class JunitBookingRunner {
-
-
 }

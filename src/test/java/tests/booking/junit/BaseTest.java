@@ -1,27 +1,34 @@
 package tests.booking.junit;
 
 import driver.MyDriver;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
+import pages.booking.MainPage;
 
 import java.time.Duration;
 
 public class BaseTest {
 
-    static WebDriver driver = MyDriver.getDriver();
+    static WebDriver driver;
+    private static final Logger LOGGER = LogManager.getLogger(BaseTest.class);
 
-    @BeforeClass
-    public static void initDriver() {
+    @Before
+    public void initDriver() {
+        LOGGER.info("Test is started");
+        driver = MyDriver.getDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.manage().window().maximize();
         driver.get("https://www.booking.com/");
     }
 
-    @AfterClass
-    public static void closeDriver() {
-        driver.close();
+    @After
+    public void closeDriver() {
+        MyDriver.killDriver();
+        LOGGER.info("Test is ended");
     }
 }

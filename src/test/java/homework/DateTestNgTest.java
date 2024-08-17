@@ -1,8 +1,11 @@
-import org.junit.Test;
+package homework;
+
+import org.testng.annotations.*;
 
 import static org.junit.Assert.assertEquals;
 
-public class DateJunitTest {
+
+public class DateTestNgTest {
 
     @Test
     public void testInvalidDay() {

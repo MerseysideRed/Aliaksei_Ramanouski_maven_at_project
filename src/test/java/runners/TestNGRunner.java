@@ -11,7 +11,7 @@ public class TestNGRunner {
 
     public static void main(String[] args) throws IOException {
         final TestNG testNG = new TestNG(true);
-        final Parser parser = new Parser("C:\\Users\\AlexeyRamanouski(Fin\\IdeaProjects\\Aliaksei_Ramanouski_maven_at_project\\src\\main\\resources\\BookingTestNGRunnerSetting.xml");
+        final Parser parser = new Parser("src/test/resources/BookingTestNGRunnerSetting.xml");
         final List<XmlSuite> suites = parser.parseToList();
         testNG.setXmlSuites(suites);
         testNG.run();

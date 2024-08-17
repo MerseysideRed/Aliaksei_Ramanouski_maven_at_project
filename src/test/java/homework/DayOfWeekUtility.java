@@ -1,3 +1,5 @@
+package homework;
+
 import java.time.LocalDateTime;
 
 public class DayOfWeekUtility {

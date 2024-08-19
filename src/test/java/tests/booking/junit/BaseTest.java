@@ -14,12 +14,13 @@ import java.time.Duration;
 
 public class BaseTest {
 
-    static WebDriver driver = MyDriver.getDriver();
+    static WebDriver driver;
     private static final Logger LOGGER = LogManager.getLogger(BaseTest.class);
 
     @Before
     public void initDriver() {
         LOGGER.info("Test is started");
+        driver = MyDriver.getDriver();
         driver.get("https://www.booking.com/");
     }
 

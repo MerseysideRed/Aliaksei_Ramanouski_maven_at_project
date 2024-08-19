@@ -3,6 +3,7 @@ package tests.booking.testng;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.booking.MainPage;
 import pages.booking.PropertyPage;
@@ -15,10 +16,17 @@ import static org.testng.AssertJUnit.assertTrue;
 
 public class BookingClassTest extends BaseTest {
 
-    private MainPage bookingMainPage = new MainPage();
-    private SearchResultsPage bookingSearchResultsPage = new SearchResultsPage();
-    private PropertyPage propertyPage = new PropertyPage();
-    private static final Logger LOGGER = LogManager.getLogger(tests.booking.junit.BaseTest.class);
+    private MainPage bookingMainPage;
+    private SearchResultsPage bookingSearchResultsPage;
+    private PropertyPage propertyPage;
+    private static final Logger LOGGER = LogManager.getLogger(tests.booking.junit.BookingClassTest.class);
+
+    @BeforeMethod
+    public void setupPages() {
+        bookingMainPage = new MainPage();
+        bookingSearchResultsPage = new SearchResultsPage();
+        propertyPage = new PropertyPage();
+    };
 
     @Test
     public void testCorrectPropertyRate() {

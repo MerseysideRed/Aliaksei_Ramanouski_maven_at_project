@@ -17,6 +17,7 @@ public class BaseTest {
     @BeforeMethod
     public void initDriver() {
         LOGGER.info("Test is started");
+        driver = MyDriver.getDriver();
         driver.get("https://www.booking.com/");
     }
 

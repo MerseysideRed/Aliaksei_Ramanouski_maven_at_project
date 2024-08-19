@@ -26,9 +26,9 @@ public class MainPage {
         select.selectByValue(selectOptionId);
     }
 
-    public void takeScreenshot() throws IOException {
+    public void takeScreenshot(String directoryForScreenshots, String screenshotName) throws IOException {
         File asfile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 
-        FileUtils.copyFile(asfile, new File("picDemoQA.png"));
+        FileUtils.copyFile(asfile, new File(directoryForScreenshots, screenshotName));
     }
 }

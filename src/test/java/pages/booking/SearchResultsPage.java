@@ -83,10 +83,10 @@ public class SearchResultsPage {
         LOGGER.trace("Change background of property card is performed, locator: //div[@data-testid='property-card'][%s]");
     }
 
-    public void takeScreenshot() throws IOException {
+    public void takeScreenshot(String directoryForScreenshots, String screenshotName) throws IOException {
         File asfile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 
-        FileUtils.copyFile(asfile, new File("pic.png"));
+        FileUtils.copyFile(asfile, new File(directoryForScreenshots, screenshotName));
 
         LOGGER.trace("Take screenshot is performed");
     }

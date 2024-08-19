@@ -50,7 +50,7 @@ public class BookingClassTest extends BaseTest {
         bookingSearchResultsPage.selectPropertyTypeCheckbox("Hotels");
         bookingSearchResultsPage.scrollToPropertyCard(10);
         bookingSearchResultsPage.changePropertyCardBackgroundColor(10);
-        bookingSearchResultsPage.takeScreenshot();
+        bookingSearchResultsPage.takeScreenshot("src/test/screenshots", "pic.png");
 
         LOGGER.debug("Test without assert testChangeColorOfBackgroundPropertyCard is completed");
     }

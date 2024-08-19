@@ -50,7 +50,7 @@ public class BookingClassTest extends BaseTest {
     @Test
     public void testChangeColorOfBackgroundPropertyCard() throws IOException {
 
-        //bookingMainPage.closeSignInWindow();
+        bookingMainPage.closeSignInWindow();
         bookingMainPage.setSearchCityField("London");
         bookingMainPage.setTimeRangeField(1, 2);
         bookingMainPage.clickSearchButton();
@@ -83,7 +83,7 @@ public class BookingClassTest extends BaseTest {
     }
 
     @Test public void testCorrectPropertyScoreRate() {
-        //bookingMainPage.closeSignInWindow();
+        bookingMainPage.closeSignInWindow();
         bookingMainPage.setSearchCityField("Прага");
         bookingMainPage.setTimeRangeField(3, 10);
         bookingMainPage.setQuantityParametersOfPeopleAndRooms("2", "1");

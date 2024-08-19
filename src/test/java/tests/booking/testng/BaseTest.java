@@ -11,14 +11,12 @@ import java.time.Duration;
 
 public class BaseTest {
 
-    WebDriver driver;
+    WebDriver driver = MyDriver.getDriver();
     private static final Logger LOGGER = LogManager.getLogger(tests.booking.junit.BaseTest.class);
 
     @BeforeMethod
     public void initDriver() {
-        driver = MyDriver.getDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        driver.manage().window().maximize();
+        LOGGER.info("Test is started");
         driver.get("https://www.booking.com/");
     }
 

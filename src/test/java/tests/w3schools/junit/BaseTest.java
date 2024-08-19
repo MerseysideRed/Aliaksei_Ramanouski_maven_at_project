@@ -14,8 +14,6 @@ public class BaseTest {
 
     @BeforeClass
     public static void initDriver() {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        driver.manage().window().maximize();
         driver.get("https://www.w3schools.com/java/");
     }
 

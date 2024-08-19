@@ -14,15 +14,12 @@ import java.time.Duration;
 
 public class BaseTest {
 
-    static WebDriver driver;
+    static WebDriver driver = MyDriver.getDriver();
     private static final Logger LOGGER = LogManager.getLogger(BaseTest.class);
 
     @Before
     public void initDriver() {
         LOGGER.info("Test is started");
-        driver = MyDriver.getDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        driver.manage().window().maximize();
         driver.get("https://www.booking.com/");
     }
 

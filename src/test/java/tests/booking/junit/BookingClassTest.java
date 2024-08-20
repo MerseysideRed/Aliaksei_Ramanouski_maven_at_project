@@ -59,7 +59,7 @@ public class BookingClassTest extends BaseTest {
     @Test
     public void testCurrencyTooltipValue() {
 
-        //bookingMainPage.closeSignInWindow();
+        bookingMainPage.closeSignInWindow();
         bookingMainPage.navigateToIndicator("currency");
 
         Assert.assertEquals(bookingMainPage.getTooltipValue("currency"), "Select your currency");
@@ -70,7 +70,7 @@ public class BookingClassTest extends BaseTest {
     @Test
     public void testLanguageTooltipValue() {
 
-        //bookingMainPage.closeSignInWindow();
+        bookingMainPage.closeSignInWindow();
         bookingMainPage.navigateToIndicator("language");
 
         Assert.assertEquals(bookingMainPage.getTooltipValue("language"), "Select your language");

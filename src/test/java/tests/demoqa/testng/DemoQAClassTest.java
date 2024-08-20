@@ -13,6 +13,6 @@ public class DemoQAClassTest extends BaseTest{
     public  void selectTest() throws IOException {
         mainPage.chooseSelectValue("oldSelectMenu", "4");
         mainPage.chooseSelectValue("cars", "saab");
-        mainPage.takeScreenshot();
+        mainPage.takeScreenshot("src/test/screenshots", "picDemoQA.png");
     }
 }

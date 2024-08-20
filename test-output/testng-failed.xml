@@ -9,6 +9,8 @@
           <include name="testCurrencyTooltipValue"/>
           <include name="testCorrectPropertyRate"/>
           <include name="closeDriver"/>
+          <include name="testCorrectPropertyScoreRate"/>
+          <include name="setupPages"/>
           <include name="testLanguageTooltipValue"/>
         </methods>
       </class> <!-- tests.booking.testng.BookingClassTest -->

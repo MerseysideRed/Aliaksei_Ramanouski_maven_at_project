@@ -34,6 +34,7 @@ public class  WebServiceTest {
                 .when()
                 .post()
                 .then()
+                .statusCode(200)
                 .extract().body().as(Data.class).getData().get(3).equals(BaseSteps.getUser(name));
     }
 }

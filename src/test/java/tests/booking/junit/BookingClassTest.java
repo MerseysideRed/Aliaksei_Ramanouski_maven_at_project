@@ -19,12 +19,13 @@ public class BookingClassTest extends BaseTest {
     private MainPage bookingMainPage = new MainPage();
     private SearchResultsPage bookingSearchResultsPage = new SearchResultsPage();
     private PropertyPage propertyPage = new PropertyPage();
+
     private static final Logger LOGGER = LogManager.getLogger(BookingClassTest.class);
 
     @Test
-    public void testCorrectPropertyRate() {
+    public void testCorrectPropertyRate() throws InterruptedException {
 
-        //bookingMainPage.closeSignInWindow();
+        bookingMainPage.closeSignInWindow();
         bookingMainPage.setSearchCityField("Paris");
         bookingMainPage.setTimeRangeField(3, 10);
         bookingMainPage.setQuantityParametersOfPeopleAndRooms("4", "2");
@@ -43,14 +44,14 @@ public class BookingClassTest extends BaseTest {
     @Test
     public void testChangeColorOfBackgroundPropertyCard() throws IOException {
 
-        //bookingMainPage.closeSignInWindow();
+        bookingMainPage.closeSignInWindow();
         bookingMainPage.setSearchCityField("London");
         bookingMainPage.setTimeRangeField(1, 2);
         bookingMainPage.clickSearchButton();
         bookingSearchResultsPage.selectPropertyTypeCheckbox("Hotels");
         bookingSearchResultsPage.scrollToPropertyCard(10);
         bookingSearchResultsPage.changePropertyCardBackgroundColor(10);
-        bookingSearchResultsPage.takeScreenshot();
+        bookingSearchResultsPage.takeScreenshot("src/test/screenshots", "pic.png");
 
         LOGGER.debug("Test without assert testChangeColorOfBackgroundPropertyCard is completed");
     }
@@ -58,7 +59,7 @@ public class BookingClassTest extends BaseTest {
     @Test
     public void testCurrencyTooltipValue() {
 
-        //bookingMainPage.closeSignInWindow();
+        bookingMainPage.closeSignInWindow();
         bookingMainPage.navigateToIndicator("currency");
 
         Assert.assertEquals(bookingMainPage.getTooltipValue("currency"), "Select your currency");
@@ -69,7 +70,7 @@ public class BookingClassTest extends BaseTest {
     @Test
     public void testLanguageTooltipValue() {
 
-        //bookingMainPage.closeSignInWindow();
+        bookingMainPage.closeSignInWindow();
         bookingMainPage.navigateToIndicator("language");
 
         Assert.assertEquals(bookingMainPage.getTooltipValue("language"), "Select your language");
@@ -79,7 +80,7 @@ public class BookingClassTest extends BaseTest {
 
     @Test
     public void testCorrectPropertyScoreRate() {
-        //bookingMainPage.closeSignInWindow();
+        bookingMainPage.closeSignInWindow();
         bookingMainPage.setSearchCityField("Прага");
         bookingMainPage.setTimeRangeField(3, 10);
         bookingMainPage.setQuantityParametersOfPeopleAndRooms("2", "1");

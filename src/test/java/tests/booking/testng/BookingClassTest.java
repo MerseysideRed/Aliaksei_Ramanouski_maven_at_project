@@ -3,6 +3,7 @@ package tests.booking.testng;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.booking.MainPage;
 import pages.booking.PropertyPage;
@@ -15,15 +16,22 @@ import static org.testng.AssertJUnit.assertTrue;
 
 public class BookingClassTest extends BaseTest {
 
-    private MainPage bookingMainPage = new MainPage();
-    private SearchResultsPage bookingSearchResultsPage = new SearchResultsPage();
-    private PropertyPage propertyPage = new PropertyPage();
-    private static final Logger LOGGER = LogManager.getLogger(tests.booking.junit.BaseTest.class);
+    private MainPage bookingMainPage;
+    private SearchResultsPage bookingSearchResultsPage;
+    private PropertyPage propertyPage;
+    private static final Logger LOGGER = LogManager.getLogger(tests.booking.junit.BookingClassTest.class);
+
+    @BeforeMethod
+    public void setupPages() {
+        bookingMainPage = new MainPage();
+        bookingSearchResultsPage = new SearchResultsPage();
+        propertyPage = new PropertyPage();
+    };
 
     @Test
     public void testCorrectPropertyRate() {
 
-        //bookingMainPage.closeSignInWindow();
+        bookingMainPage.closeSignInWindow();
         bookingMainPage.setSearchCityField("Paris");
         bookingMainPage.setTimeRangeField(3, 10);
         bookingMainPage.setQuantityParametersOfPeopleAndRooms("4", "2");
@@ -42,21 +50,22 @@ public class BookingClassTest extends BaseTest {
     @Test
     public void testChangeColorOfBackgroundPropertyCard() throws IOException {
 
-        //bookingMainPage.closeSignInWindow();
+        bookingMainPage.closeSignInWindow();
         bookingMainPage.setSearchCityField("London");
         bookingMainPage.setTimeRangeField(1, 2);
         bookingMainPage.clickSearchButton();
         bookingSearchResultsPage.selectPropertyTypeCheckbox("Hotels");
         bookingSearchResultsPage.scrollToPropertyCard(10);
         bookingSearchResultsPage.changePropertyCardBackgroundColor(10);
-        bookingSearchResultsPage.takeScreenshot();
+        bookingSearchResultsPage.takeScreenshot("src/test/screenshots", "pic.png");
 
         LOGGER.debug("Test without assert testChangeColorOfBackgroundPropertyCard is completed");
     }
 
     @Test
     public void testCurrencyTooltipValue() {
-        //bookingMainPage.closeSignInWindow();
+
+        bookingMainPage.closeSignInWindow();
         bookingMainPage.navigateToIndicator("currency");
 
         Assert.assertEquals(bookingMainPage.getTooltipValue("currency"), "Select your currency");
@@ -66,7 +75,8 @@ public class BookingClassTest extends BaseTest {
 
     @Test
     public void testLanguageTooltipValue() {
-        //bookingMainPage.closeSignInWindow();
+
+        bookingMainPage.closeSignInWindow();
         bookingMainPage.navigateToIndicator("language");
 
         Assert.assertEquals(bookingMainPage.getTooltipValue("language"), "Select your language");
@@ -75,7 +85,7 @@ public class BookingClassTest extends BaseTest {
     }
 
     @Test public void testCorrectPropertyScoreRate() {
-        //bookingMainPage.closeSignInWindow();
+        bookingMainPage.closeSignInWindow();
         bookingMainPage.setSearchCityField("Прага");
         bookingMainPage.setTimeRangeField(3, 10);
         bookingMainPage.setQuantityParametersOfPeopleAndRooms("2", "1");

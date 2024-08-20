@@ -21,8 +21,6 @@ public class BaseTest {
     public void initDriver() {
         LOGGER.info("Test is started");
         driver = MyDriver.getDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        driver.manage().window().maximize();
         driver.get("https://www.booking.com/");
     }
 

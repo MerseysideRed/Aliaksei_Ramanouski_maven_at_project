@@ -18,14 +18,26 @@ import java.util.List;
 public class SearchResultsPage {
 
     WebDriver driver = MyDriver.getDriver();
+
     private static final Logger LOGGER = LogManager.getLogger(SearchResultsPage.class);
+
+    private static final String PROPERTY_TYPE_HOTELS_CHECKBOX = ("//div[@id='popular-filters-go-here']//preceding-sibling::div[@data-testid='filters-sidebar']//div[@data-filters-group='ht_id']//div[text()='%s']");
+    private static final String PROPERTY_RATING_CHECKBOX = ("//div[@id='popular-filters-go-here']//preceding-sibling::div[@data-testid='filters-sidebar']//div[@data-filters-group='class']//div[text()='%s']");
+    private static final String RATE_LABEL = ("//label[@data-testid='filter:class=%s']");
+    private static final String DROPDOWN_SORTING_LIST = ("//button[@data-testid='sorters-dropdown-trigger']");
+    private static final String DROPDOWN_SORTING_LIST_PROPERTY_RATING_LOW_TO_HIGH_OPTION = ("//div/span[text()='Property rating (low to high)']");
+    private static final String PROPERTY_CARD_RATE_VALUE = ("//div[@data-testid='property-card'][%s]//div[@aria-label]");
+    private static final String PROPERTY_CARD = ("//div[@data-testid='property-card'][%s]");
+    private static final String SCORE_RATE_CHECKBOX = ("//div[@id='popular-filters-go-here']//preceding-sibling::div[@data-testid='filters-sidebar']//div[@data-filters-group='review_score']//div[text()='%s']");
+    private static final String SCORE_RATE_LABEL = ("//label[@data-testid='filter:%s']");
+    private static final String PROPERTY_CARD_IMAGE = ("//div[@data-testid='property-card'][%s]//img");
 
     public void selectPropertyTypeCheckbox(String propertyType) {
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
         WebElement propertyTypeHotelsCheckbox = new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.elementToBeClickable(By
-                        .xpath(String.format("//div[@id='popular-filters-go-here']//preceding-sibling::div[@data-testid='filters-sidebar']//div[@data-filters-group='ht_id']//div[text()='%s']", propertyType))));
+                        .xpath(String.format(PROPERTY_TYPE_HOTELS_CHECKBOX, propertyType))));
         Actions actions = new Actions(driver);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         actions.moveToElement(propertyTypeHotelsCheckbox).perform();
@@ -35,27 +47,27 @@ public class SearchResultsPage {
     }
 
     public void selectPropertyRatingCheckbox(String propertyRateInStars) {
-        driver.findElement(By.xpath(String.format("//div[@id='popular-filters-go-here']//preceding-sibling::div[@data-testid='filters-sidebar']//div[@data-filters-group='class']//div[text()='%s']", propertyRateInStars))).click();
+        driver.findElement(By.xpath(String.format(PROPERTY_RATING_CHECKBOX, propertyRateInStars))).click();
 
         LOGGER.trace("Select property rate checkbox is performed, locator: //div[@id='popular-filters-go-here']//preceding-sibling::div[@data-testid='filters-sidebar']//div[@data-filters-group='class']//div[text()='%s']");
     }
 
     public void explicitWaitOfDisplayedLabelOfRate(int propertyRate) {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(By.xpath(String.format("//label[@data-testid='filter:class=%s']", propertyRate))));
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(By.xpath(String.format(RATE_LABEL, propertyRate))));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         LOGGER.trace("Explicit wait of displayed rate label is performed, locator: //label[@data-testid='filter:class=%s']");
     }
 
     public void clickToDropdownSortingList() {
-        driver.findElement(By.xpath("//button[@data-testid='sorters-dropdown-trigger']")).click();
+        driver.findElement(By.xpath(DROPDOWN_SORTING_LIST)).click();
 
         LOGGER.trace("Click to dropdown sorting list button is performed, locator: //button[@data-testid='sorters-dropdown-trigger']");
     }
 
     public void clickToPropertyRatingLowToHighOptionOfDropdownSortingList() {
-        driver.findElement(By.xpath("//div/span[text()='Property rating (low to high)']")).click();
+        driver.findElement(By.xpath(DROPDOWN_SORTING_LIST_PROPERTY_RATING_LOW_TO_HIGH_OPTION)).click();
 
         LOGGER.trace("Click to property rating low tp high option of dropdown sorting list is performed, locator: //div/span[text()='Property rating (low to high)']");
     }
@@ -63,11 +75,11 @@ public class SearchResultsPage {
     public String getRateFromPropertyCard(int propertyCardOrderNumber) {
         LOGGER.trace("Get rate from property card will be performed, locator: //div[@data-testid='property-card'][%s]//div[@aria-label]");
 
-        return driver.findElement(By.xpath(String.format("//div[@data-testid='property-card'][%s]//div[@aria-label]", propertyCardOrderNumber))).getAttribute("aria-label");
+        return driver.findElement(By.xpath(String.format(PROPERTY_CARD_RATE_VALUE, propertyCardOrderNumber))).getAttribute("aria-label");
     }
 
     public void scrollToPropertyCard(int propertyCardOrderNumber) {
-        WebElement propertyCard = driver.findElement(By.xpath(String.format("//div[@data-testid='property-card'][%s]", propertyCardOrderNumber)));
+        WebElement propertyCard = driver.findElement(By.xpath(String.format(PROPERTY_CARD, propertyCardOrderNumber)));
         Actions actions = new Actions(driver);
         actions.scrollToElement(propertyCard).build().perform();
 
@@ -75,7 +87,7 @@ public class SearchResultsPage {
     }
 
     public void changePropertyCardBackgroundColor(int propertyCardOrderNumber) {
-        WebElement propertyCard = driver.findElement(By.xpath(String.format("//div[@data-testid='property-card'][%s]", propertyCardOrderNumber)));
+        WebElement propertyCard = driver.findElement(By.xpath(String.format(PROPERTY_CARD, propertyCardOrderNumber)));
         ((JavascriptExecutor)driver).executeScript("arguments[0].style.backgroundColor = 'green'", propertyCard);
         ((JavascriptExecutor)driver).executeScript("arguments[0].style.color = 'red'", propertyCard);
         ((JavascriptExecutor)driver).executeScript("arguments[0].click()", propertyCard);
@@ -96,7 +108,7 @@ public class SearchResultsPage {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
         WebElement scoreRateCheckbox = new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.elementToBeClickable(By
-                        .xpath(String.format("//div[@id='popular-filters-go-here']//preceding-sibling::div[@data-testid='filters-sidebar']//div[@data-filters-group='review_score']//div[text()='%s']", scoreRateText))));
+                        .xpath(String.format(SCORE_RATE_CHECKBOX, scoreRateText))));
         Actions actions = new Actions(driver);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         actions.moveToElement(scoreRateCheckbox).perform();
@@ -107,14 +119,14 @@ public class SearchResultsPage {
 
     public void explicitWaitOfDisplayedLabelOfScoreRate(String propertyScoreRate) {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(By.xpath(String.format("//label[@data-testid='filter:%s']", propertyScoreRate))));
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(By.xpath(String.format(SCORE_RATE_LABEL, propertyScoreRate))));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         LOGGER.trace("Explicit wait of displayed label of score rate is performed, locator: //label[@data-testid='filter:%s']");
     }
 
     public void clickToPropertyCardImage(int propertyCardNumber) {
-        driver.findElement(By.xpath(String.format("//div[@data-testid='property-card'][%s]//img", propertyCardNumber))).click();
+        driver.findElement(By.xpath(String.format(PROPERTY_CARD_IMAGE, propertyCardNumber))).click();
 
         LOGGER.trace("Click to property card image is performed, locator: //div[@data-testid='property-card'][%s]//img");
     }

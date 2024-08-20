@@ -19,6 +19,7 @@ public class BookingClassTest extends BaseTest {
     private MainPage bookingMainPage = new MainPage();
     private SearchResultsPage bookingSearchResultsPage = new SearchResultsPage();
     private PropertyPage propertyPage = new PropertyPage();
+
     private static final Logger LOGGER = LogManager.getLogger(BookingClassTest.class);
 
     @Test

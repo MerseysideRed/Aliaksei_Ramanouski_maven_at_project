@@ -31,7 +31,7 @@ public class BookingClassTest extends BaseTest {
     @Test
     public void testCorrectPropertyRate() {
 
-        //bookingMainPage.closeSignInWindow();
+        bookingMainPage.closeSignInWindow();
         bookingMainPage.setSearchCityField("Paris");
         bookingMainPage.setTimeRangeField(3, 10);
         bookingMainPage.setQuantityParametersOfPeopleAndRooms("4", "2");

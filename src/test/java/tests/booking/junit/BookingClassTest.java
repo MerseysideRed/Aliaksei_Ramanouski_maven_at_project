@@ -23,9 +23,9 @@ public class BookingClassTest extends BaseTest {
     private static final Logger LOGGER = LogManager.getLogger(BookingClassTest.class);
 
     @Test
-    public void testCorrectPropertyRate() {
+    public void testCorrectPropertyRate() throws InterruptedException {
 
-        //bookingMainPage.closeSignInWindow();
+        bookingMainPage.closeSignInWindow();
         bookingMainPage.setSearchCityField("Paris");
         bookingMainPage.setTimeRangeField(3, 10);
         bookingMainPage.setQuantityParametersOfPeopleAndRooms("4", "2");

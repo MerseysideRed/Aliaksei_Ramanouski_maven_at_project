@@ -39,9 +39,9 @@ public class SearchResultsPage extends BasePage{
                 .until(ExpectedConditions.elementToBeClickable(By
                         .xpath(String.format(PROPERTY_TYPE_HOTELS_CHECKBOX, propertyType))));
         Actions actions = new Actions(driver);
+        actions.moveToElement(new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(propertyTypeHotelsCheckbox))).perform();
+        (new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(propertyTypeHotelsCheckbox))).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        actions.moveToElement(propertyTypeHotelsCheckbox).perform();
-        propertyTypeHotelsCheckbox.click();
 
         LOGGER.trace("Select property type checkbox is performed, locator: //div[@id='popular-filters-go-here']//preceding-sibling::div[@data-testid='filters-sidebar']//div[@data-filters-group='ht_id']//div[text()='%s']");
     }

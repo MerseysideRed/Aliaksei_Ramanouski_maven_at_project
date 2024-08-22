@@ -39,3 +39,4 @@ build/
 /src/test/resources/db,properties
 /src/test/screenshots/
 /test-output/
+/src/test/resources/temp/

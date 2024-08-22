@@ -15,7 +15,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchResultsPage {
+public class SearchResultsPage extends BasePage{
 
     WebDriver driver = MyDriver.getDriver();
 

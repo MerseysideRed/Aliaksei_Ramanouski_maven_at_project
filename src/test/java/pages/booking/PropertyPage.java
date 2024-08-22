@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class PropertyPage {
+public class PropertyPage extends BasePage{
 
     WebDriver driver = MyDriver.getDriver();
 

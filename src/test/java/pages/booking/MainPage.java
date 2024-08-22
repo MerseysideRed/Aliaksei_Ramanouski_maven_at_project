@@ -11,7 +11,7 @@ import org.openqa.selenium.interactions.Actions;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class MainPage {
+public class MainPage extends BasePage{
 
     WebDriver driver = MyDriver.getDriver();
 

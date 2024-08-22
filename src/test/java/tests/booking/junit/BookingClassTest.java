@@ -12,6 +12,7 @@ import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
+import static pages.booking.BasePage.navigateToURL;
 
 
 public class BookingClassTest extends BaseTest {
@@ -25,6 +26,7 @@ public class BookingClassTest extends BaseTest {
     @Test
     public void testCorrectPropertyRate() throws InterruptedException {
 
+        navigateToURL("https://www.booking.com/");
         bookingMainPage.closeSignInWindow();
         bookingMainPage.setSearchCityField("Paris");
         bookingMainPage.setTimeRangeField(3, 10);
@@ -44,6 +46,7 @@ public class BookingClassTest extends BaseTest {
     @Test
     public void testChangeColorOfBackgroundPropertyCard() throws IOException {
 
+        navigateToURL("https://www.booking.com/");
         bookingMainPage.closeSignInWindow();
         bookingMainPage.setSearchCityField("London");
         bookingMainPage.setTimeRangeField(1, 2);
@@ -59,6 +62,7 @@ public class BookingClassTest extends BaseTest {
     @Test
     public void testCurrencyTooltipValue() {
 
+        navigateToURL("https://www.booking.com/");
         bookingMainPage.closeSignInWindow();
         bookingMainPage.navigateToIndicator("currency");
 
@@ -70,6 +74,7 @@ public class BookingClassTest extends BaseTest {
     @Test
     public void testLanguageTooltipValue() {
 
+        navigateToURL("https://www.booking.com/");
         bookingMainPage.closeSignInWindow();
         bookingMainPage.navigateToIndicator("language");
 
@@ -80,6 +85,8 @@ public class BookingClassTest extends BaseTest {
 
     @Test
     public void testCorrectPropertyScoreRate() {
+
+        navigateToURL("https://www.booking.com/");
         bookingMainPage.closeSignInWindow();
         bookingMainPage.setSearchCityField("Прага");
         bookingMainPage.setTimeRangeField(3, 10);

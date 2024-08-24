@@ -10,6 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.NoSuchElementException;
 
 public class MainPage extends BasePage{
 
@@ -29,11 +30,14 @@ public class MainPage extends BasePage{
     private static final String TOOLTIP = ("//button[@data-testid= 'header-%s-picker-trigger']");
 
 
-
     public void closeSignInWindow() {
-        WebElement buttonCLoseSignInPopUp = driver.findElement(By.xpath(BUTTON_CLOSE_SIGN_IN_POPUP));
-        if (buttonCLoseSignInPopUp.isDisplayed()) {
-            buttonCLoseSignInPopUp.click();
+        try {
+            WebElement buttonCLoseSignInPopUp = driver.findElement(By.xpath(BUTTON_CLOSE_SIGN_IN_POPUP));
+            if (buttonCLoseSignInPopUp.isDisplayed()) {
+                buttonCLoseSignInPopUp.click();
+            }
+        } catch (NoSuchElementException e) {
+            LOGGER.trace("Close Sign-in window wasn't found, locator: //button[@aria-label='Dismiss sign-in info.']");
         }
 
         LOGGER.trace("Close Sign-in window is performed, locator: //button[@aria-label='Dismiss sign-in info.']");

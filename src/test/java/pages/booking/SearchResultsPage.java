@@ -39,8 +39,14 @@ public class SearchResultsPage extends BasePage{
                 .until(ExpectedConditions.elementToBeClickable(By
                         .xpath(String.format(PROPERTY_TYPE_HOTELS_CHECKBOX, propertyType))));
         Actions actions = new Actions(driver);
-        actions.moveToElement(new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(propertyTypeHotelsCheckbox))).perform();
-        (new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(propertyTypeHotelsCheckbox))).click();
+        try {
+            actions.moveToElement(new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(propertyTypeHotelsCheckbox))).perform();
+            (new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(propertyTypeHotelsCheckbox))).click();
+        }
+        catch (StaleElementReferenceException e) {
+            actions.moveToElement(new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(propertyTypeHotelsCheckbox))).perform();
+            (new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(propertyTypeHotelsCheckbox))).click();
+        }
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         LOGGER.trace("Select property type checkbox is performed, locator: //div[@id='popular-filters-go-here']//preceding-sibling::div[@data-testid='filters-sidebar']//div[@data-filters-group='ht_id']//div[text()='%s']");
@@ -67,7 +73,9 @@ public class SearchResultsPage extends BasePage{
     }
 
     public void clickToPropertyRatingLowToHighOptionOfDropdownSortingList() {
-        driver.findElement(By.xpath(DROPDOWN_SORTING_LIST_PROPERTY_RATING_LOW_TO_HIGH_OPTION)).click();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(By.xpath(DROPDOWN_SORTING_LIST_PROPERTY_RATING_LOW_TO_HIGH_OPTION))).click();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         LOGGER.trace("Click to property rating low tp high option of dropdown sorting list is performed, locator: //div/span[text()='Property rating (low to high)']");
     }
